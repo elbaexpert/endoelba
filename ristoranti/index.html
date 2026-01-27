@@ -1359,8 +1359,7 @@ a.pulseBtn.btn.calendarBtn *, a.btn.calendarBtn *, .calendarBtn *{ color:#ffffff
     async function shareNative(){
     const p = new URLSearchParams(window.location.search);
     const src = p.get("src") || "direct";
-    const url = (window.location.href.startsWith("file:")) ? ("https://elbaexpert.github.io/endoelba/?src="+encodeURIComponent(src)) : window.location.href;
-    const data = { title: "EndoElba", text: "1 donna su 10… mai più sole - EndoElba", url };
+    const url = (window.location.href.startsWith("file:")) ? ("https://elbaexpert.github.io/endoelba/?src="+encodeURIComponent(src)) : window.location.href;    const data = { title: "EndoElba", text: "1 donna su 10… mai più sole - EndoElba", url };
     if(navigator.share){
       try{ await navigator.share(data); return true; }catch(_){ return false; }
     }
