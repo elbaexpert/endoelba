@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
-<title>EndoElba – QR Ristoranti</title>
+<title>EndoElba – Tovagliette</title>
 <style>
 :root{
   --topbarH:84px;
@@ -1115,7 +1115,7 @@ a.pulseBtn.btn.calendarBtn *, a.btn.calendarBtn *, .calendarBtn *{ color:#ffffff
 <button aria-label="Condividi" class="iconBtn shareTop" id="shareBtnTop" type="button" data-track="share_open">
 <svg aria-hidden="true" height="18" viewbox="0 0 24 24" width="18"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7a3.27 3.27 0 0 0 0-1.39l7-4.11A2.99 2.99 0 0 0 18 7.91a3 3 0 1 0-3-3c0 .23.03.45.08.66l-7 4.11A3 3 0 1 0 6 15a2.99 2.99 0 0 0 2.05-.81l7.12 4.18c-.05.2-.07.41-.07.63a3 3 0 1 0 3-2.92z"></path></svg>
 </button>
-<a aria-label="WhatsApp EndoElba" class="btn-wa-top" href="https://wa.me/393534650921" rel="noopener" target="_blank">
+<a aria-label="WhatsApp EndoElba" class="btn-wa-top" href="https://wa.me/393534650921" rel="noopener" target="_blank" data-track="contatto_whatsapp">
 <i aria-hidden="true" class="fab fa-whatsapp"></i>
 </a>
 <a class="btn topFollow" href="https://www.instagram.com/endoelba/" rel="noopener" target="_blank">
@@ -1134,27 +1134,27 @@ a.pulseBtn.btn.calendarBtn *, a.btn.calendarBtn *, .calendarBtn *{ color:#ffffff
 <section class="card" id="quiz">
 <h2>Mini‑quiz (senza giudizio)</h2>
 <p class="muted quizIntro"><strong class="quizLead">Vediamo quante ne sai 😉</strong><br/>Scegli una risposta e ti si aprirà una breve spiegazione. Non è un test, è solo consapevolezza.</p>
-<div class="subbox" data-q="1">
+<div class="subbox" data-q="1" data-qid="q1">
 <p class="quizQ">1) Un dolore mestruale molto forte è “normale”?</p>
 <div class="optRow"><button class="opt wrong">Sì</button><button class="opt correct" data-correct="1">No</button></div><div class="explain" data-for="correct">No, il dolore non è normale: consulta uno specialista.</div>
 <div class="explain" data-for="wrong">Se il dolore ti blocca la vita o si ripete spesso, vale la pena approfondire con uno specialista.</div>
 </div>
-<div class="subbox" data-q="2" style="margin-top:12px">
+<div class="subbox" data-q="2" style="margin-top:12px" data-qid="q2">
 <p class="quizQ">2) È possibile convivere con l’endometriosi pur senza una diagnosi accertata?</p>
 <div class="optRow"><button class="opt correct" data-correct="1">Sì</button><button class="opt wrong">No</button></div><div class="explain" data-for="correct">Sì. Proprio perché i sintomi possono essere molti e diversi, la diagnosi può arrivare dopo anni.</div>
 <div class="explain" data-for="wrong">Sì! È possibile perché, a causa della molteplicità dei sintomi, può esserci un ritardo diagnostico di circa 10 anni.</div>
 </div>
-<div class="subbox" data-q="3" style="margin-top:12px">
+<div class="subbox" data-q="3" style="margin-top:12px" data-qid="q3">
 <p class="quizQ">3) L’endometriosi “si vede” sempre dall’esterno?</p>
 <div class="optRow"><button class="opt wrong">Sì</button><button class="opt correct" data-correct="1">No</button></div><div class="explain" data-for="correct">Proprio perché non si vede spesso non viene riconosciuta.</div>
 <div class="explain" data-for="wrong">Succede in rari casi. Se la malattia è sintomatica incide sulla qualità della vita.</div>
 </div>
-<div class="subbox" data-q="4" style="margin-top:12px">
+<div class="subbox" data-q="4" style="margin-top:12px" data-qid="q4">
 <p class="quizQ">4) Chi sta vicino può fare la differenza?</p>
 <div class="optRow"><button class="opt correct" data-correct="1">Sì</button><button class="opt wrong">No</button></div><div class="explain" data-for="correct">Sì: ascoltare, non minimizzare, informarsi con interesse e senza giudizio cambia.</div>
 <div class="explain" data-for="wrong">Il supporto di amici e familiari non solo fa la differenza ma è fondamentale!!! Non serve capire tutto, basta esserci.</div>
 </div>
-<div class="subbox" data-q="5" style="margin-top:12px">
+<div class="subbox" data-q="5" style="margin-top:12px" data-qid="q5">
 <p class="quizQ">5) Riconoscere prima i segnali può aiutare?</p>
 <div class="optRow"><button class="opt correct" data-correct="1">Sì</button><button class="opt wrong">No</button></div><div class="explain" data-for="correct">Sì: riconoscere prima i segnali può portare a un percorso terapeutico più rapido e consapevole, evitando anni di sofferenza.</div>
 <div class="explain" data-for="wrong">Ignorare i sintomi e la malattia può aggravare significativamente la patologia. L’indifferenza crea sofferenza e solitudine.</div>
@@ -1184,19 +1184,19 @@ a.pulseBtn.btn.calendarBtn *, a.btn.calendarBtn *, .calendarBtn *{ color:#ffffff
 
 <div class="grid2">
 </div>
-<div class="carousel" data-carousel="storie"><div class="carouselTrack"><div class="carouselItem"><div class="subbox">
+<div class="carousel" data-carousel="storie"><div class="carouselTrack"><div class="carouselItem"><div class="subbox" data-qid="q">
 <div class="storyHead">
 <h3>“Non era la normalità”</h3>
 <div class="storyMeta">Gianna - 61 anni</div>
 </div>
 <p class="muted">…che il dolore mi bloccava davvero la vita. Poi ho capito che quella non era la normalità.</p>
-</div></div><div class="carouselItem"><div class="subbox">
+</div></div><div class="carouselItem"><div class="subbox" data-qid="q">
 <div class="storyHead">
 <h3>“Parlarne mi ha sbloccata”</h3>
 <div class="storyMeta">Katia - 49 anni</div>
 </div>
 <p class="muted">Mi organizzavo attorno al dolore: mi chiudevo, mi isolavo. Parlarne mi ha dato la forza e il coraggio per affrontare il mio percorso.</p>
-</div></div><div class="carouselItem"><div class="subbox">
+</div></div><div class="carouselItem"><div class="subbox" data-qid="q">
 <div class="storyHead">
 <h3>“Non riguarda solo me”</h3>
 <div class="storyMeta">Lucia - 18 anni</div>
@@ -1252,11 +1252,11 @@ a.pulseBtn.btn.calendarBtn *, a.btn.calendarBtn *, .calendarBtn *{ color:#ffffff
 <h2>Sostieni EndoElba</h2>
 <p class="muted">Puoi sostenerci con la tessera soci o con una donazione: <strong>è una scelta consapevole e volontaria</strong>.</p>
 <div class="btnRow">
-<a class="btn greenSoft" href="https://endoelba.it/tessera-soci" rel="noopener" target="_blank">Tessera soci</a>
+<a class="btn greenSoft" href="https://endoelba.it/tessera-soci" rel="noopener" target="_blank" data-track="tessera">Tessera soci</a>
 <a class="btn yellowDona" href="https://endoelba.it/tessera-soci" rel="noopener" target="_blank" data-track="dona">Dona</a>
 </div>
 </section>
-<section class="card" id="contatti"><h2>Contatti</h2><p class="muted">Il nostro gruppo è sempre a disposizione.<br/>Potete contattarci via whattsapp, dal nostro sito internet o parlando direttamente con noi <strong>... noi ci siamo, sempre!</strong></p><div class="btnRow"><a aria-label="WhatsApp EndoElba" class="btn btn-wa" href="https://wa.me/393534650921" rel="noopener" target="_blank"><i aria-hidden="true" class="fab fa-whatsapp"></i></a><a class="btn btn-site" href="https://endoelba.it/" rel="noopener" target="_blank">EndoElba.it</a><a aria-label="Email EndoElba" class="btn btn-email" href="mailto:endoelba@gmail.com"><span class="gmailIcon"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span>Email</span></a></div></section>
+<section class="card" id="contatti"><h2>Contatti</h2><p class="muted">Il nostro gruppo è sempre a disposizione.<br/>Potete contattarci via whattsapp, dal nostro sito internet o parlando direttamente con noi <strong>... noi ci siamo, sempre!</strong></p><div class="btnRow"><a aria-label="WhatsApp EndoElba" class="btn btn-wa" href="https://wa.me/393534650921" rel="noopener" target="_blank" data-track="contatto_whatsapp"><i aria-hidden="true" class="fab fa-whatsapp"></i></a><a class="btn btn-site" href="https://endoelba.it/" rel="noopener" target="_blank" data-track="contatto_sito">EndoElba.it</a><a aria-label="Email EndoElba" class="btn btn-email" href="mailto:endoelba@gmail.com" data-track="contatto_email"><span class="gmailIcon"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span>Email</span></a></div></section>
 <section class="card finalePurple" style="margin-top:14px">
 <div class="finaleText">
 <span>Se anche solo una cosa</span>
@@ -1306,11 +1306,13 @@ a.pulseBtn.btn.calendarBtn *, a.btn.calendarBtn *, .calendarBtn *{ color:#ffffff
   // ---------- GENERIC TRACKING ----------
   function getCampaign(){
     const p = new URLSearchParams(window.location.search);
-    return p.get("src") || "direct";
+    return { src: (p.get("src") || "direct"), loc: (p.get("loc") || "") };
   }
   function fireTrack(name, props){
     props = props || {};
-    props.src = props.src || getCampaign();
+    const c=getCampaign();
+    props.src = props.src || c.src;
+    if(!props.loc && c.loc) props.loc = c.loc;
     props.page = props.page || (location.pathname || "/");
     // Umami
     if(window.umami && typeof window.umami.track === "function"){
@@ -1332,6 +1334,61 @@ a.pulseBtn.btn.calendarBtn *, a.btn.calendarBtn *, .calendarBtn *{ color:#ffffff
     const label = (el.getAttribute("aria-label") || el.textContent || "").trim().slice(0,80);
     fireTrack(name, {label});
   }, true);
+
+  // ---------- SCROLL/ENGAGEMENT TRACK ----------
+  let maxScrollBucket = 0;
+  function calcScrollPct(){
+    const doc = document.documentElement;
+    const scrollTop = window.scrollY || doc.scrollTop || 0;
+    const height = (doc.scrollHeight || 1) - (window.innerHeight || 1);
+    if(height <= 0) return 100;
+    return Math.min(100, Math.max(0, Math.round((scrollTop/height)*100)));
+  }
+  function bucketize(pct){
+    if(pct >= 95) return 100;
+    if(pct >= 90) return 90;
+    if(pct >= 75) return 75;
+    if(pct >= 50) return 50;
+    if(pct >= 25) return 25;
+    return 0;
+  }
+  function onScroll(){
+    const pct = calcScrollPct();
+    const b = bucketize(pct);
+    if(b > maxScrollBucket){
+      maxScrollBucket = b;
+      fireTrack("scroll_reach", {bucket: String(b)});
+    }
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  setTimeout(onScroll, 600);
+
+  setTimeout(()=>{ fireTrack("engaged_120s"); }, 120000);
+
+  window.addEventListener("pagehide", ()=>{ 
+    if(maxScrollBucket>0) fireTrack("scroll_max", {bucket: String(maxScrollBucket)});
+  });
+
+  // ---------- SECTION VIEWS ----------
+  if("IntersectionObserver" in window){
+    const seen = new Set();
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){
+          const id = en.target.getAttribute("id") || "";
+          if(id && !seen.has(id)){
+            seen.add(id);
+            fireTrack("section_view", {section: id});
+          }
+        }
+      });
+    }, {threshold:0.35});
+    ["numeri","quiz","storie","famosi","iniziative","sostieni","contatti"].forEach(id=>{
+      const el = document.getElementById(id);
+      if(el) io.observe(el);
+    });
+  }
+
 
 
 
@@ -1453,6 +1510,9 @@ function openSheet(){
         // select
         btn.classList.add("selected","pop");
         const isCorrect = btn.classList.contains("correct");
+        const qid = box.getAttribute("data-qid") || box.getAttribute("data-q") || "q";
+        const ans = (btn.textContent || "").trim().slice(0,60);
+        fireTrack("quiz_answer", {q: String(qid), correct: isCorrect ? "1":"0", answer: ans});
         if(isCorrect) burstHearts(btn);
         const exp = box.querySelector('.explain[data-for="'+(isCorrect?'correct':'wrong')+'"]');
         if(exp) exp.classList.add("show");
@@ -1471,6 +1531,7 @@ function openSheet(){
     function go(i){
       idx = (i % n + n) % n;
       track.style.transform = "translateX(" + (-idx*100) + "%)";
+      try{ const name = car.getAttribute("data-carousel") || "carousel"; fireTrack("carousel_move",{carousel:name,index:String(idx)}); }catch(_){ }
     }
     car.__go = go;
     car.__idx = ()=>idx;
