@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta name="color-scheme" content="light">
 <title>ENDOELBA - 1 donna su 10 - tovaglietta ristoranti 2026</title>
 <style>
 :root{
@@ -1160,6 +1161,30 @@ a.pulseBtn.btn.calendarBtn *, a.btn.calendarBtn *, .calendarBtn *{ color:#ffffff
 </script>
 
 
+<script>
+(function () {
+  try {
+    const key = 'ee_theme_sent';
+    if (sessionStorage.getItem(key)) return;
+
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = prefersDark ? 'dark' : 'light';
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'theme_preference', {
+        theme: theme,
+        event_category: 'ui'
+      });
+    }
+
+    sessionStorage.setItem(key, '1');
+  } catch (e) {
+    // ignore
+  }
+})();
+</script>
+
+  
   
 </head>
 <body>
@@ -1772,6 +1797,67 @@ function openSheet(){
   });
 })();
 </script>
+
+
+
+<button
+  id="lightHint"
+  aria-label="Esperienza ottimizzata per modalità chiara"
+  title="Esperienza ottimizzata per modalità chiara">
+  ☀️
+</button>
+
+
+<style>
+  #lightHint{
+    display:none;
+    position:fixed;
+    top:12px;
+    right:12px;
+    z-index:9999;
+    border:1px solid rgba(0,0,0,.15);
+    background:rgba(255,255,255,.92);
+    backdrop-filter: blur(6px);
+    padding:8px 10px;
+    border-radius:999px;
+    font-size:18px;
+    line-height:1;
+    cursor:default;
+  }
+</style>
+
+
+<script>
+(function () {
+  try {
+    // verifica dark mode di sistema
+    const prefersDark = window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (!prefersDark) return;
+
+    const btn = document.getElementById('lightHint');
+    if (!btn) return;
+
+    // mostra l’icona
+    btn.style.display = 'inline-flex';
+
+    // mostralo una sola volta per sessione
+    const key = 'ee_light_hint_seen';
+    if (sessionStorage.getItem(key)) return;
+    sessionStorage.setItem(key, '1');
+
+    // nascondi automaticamente dopo 10 secondi
+    setTimeout(() => {
+      btn.style.display = 'none';
+    }, 10000);
+
+  } catch(e) {
+    // silenzioso
+  }
+})();
+</script>
+
 
 
   
