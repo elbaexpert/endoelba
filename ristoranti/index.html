@@ -1724,5 +1724,33 @@ function openSheet(){
     </div>
   </div>
 
+  <script>
+(function () {
+  function getParam(name) {
+    return new URLSearchParams(window.location.search).get(name);
+  }
+
+  document.addEventListener('click', function (e) {
+    const el = e.target.closest('[data-track]');
+    if (!el) return;
+
+    const eventName = el.getAttribute('data-track');
+
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, {
+        event_category: 'interaction',
+        src: getParam('src'),
+        campaign: getParam('campaign'),
+        place: getParam('place'),
+        city: getParam('city'),
+        year: getParam('year'),
+        page_location: window.location.href
+      });
+    }
+  });
+})();
+</script>
+
+  
 </body>
 </html>
