@@ -1800,63 +1800,65 @@ function openSheet(){
 
 
 
-<button
-  id="lightHint"
-  aria-label="Esperienza ottimizzata per modalità chiara"
-  title="Esperienza ottimizzata per modalità chiara">
-  ☀️
-</button>
+<div id="lightHintWrap" aria-hidden="true">
+  <span id="lightHintText">☀️ Esperienza ottimizzata per modalità chiara</span>
+</div>
 
 
 <style>
-  #lightHint{
+  #lightHintWrap{
     display:none;
     position:fixed;
     top:12px;
     right:12px;
     z-index:9999;
+  }
+  #lightHintText{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
     border:1px solid rgba(0,0,0,.15);
     background:rgba(255,255,255,.92);
     backdrop-filter: blur(6px);
-    padding:8px 10px;
+    padding:10px 12px;
     border-radius:999px;
-    font-size:18px;
+    font-size:14px;
     line-height:1;
-    cursor:default;
+    color:#111;
+    box-shadow:0 6px 18px rgba(0,0,0,.12);
+    user-select:none;
   }
 </style>
+
 
 
 <script>
 (function () {
   try {
-    // verifica dark mode di sistema
     const prefersDark = window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     if (!prefersDark) return;
 
-    const btn = document.getElementById('lightHint');
-    if (!btn) return;
+    const wrap = document.getElementById('lightHintWrap');
+    if (!wrap) return;
 
-    // mostra l’icona
-    btn.style.display = 'inline-flex';
-
-    // mostralo una sola volta per sessione
     const key = 'ee_light_hint_seen';
     if (sessionStorage.getItem(key)) return;
     sessionStorage.setItem(key, '1');
 
-    // nascondi automaticamente dopo 10 secondi
+    wrap.style.display = 'block';
+    wrap.setAttribute('aria-hidden', 'false');
+
     setTimeout(() => {
-      btn.style.display = 'none';
+      wrap.style.display = 'none';
+      wrap.setAttribute('aria-hidden', 'true');
     }, 10000);
 
-  } catch(e) {
-    // silenzioso
-  }
+  } catch(e) {}
 })();
 </script>
+
 
 
 
