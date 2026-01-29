@@ -1751,6 +1751,29 @@ function openSheet(){
 })();
 </script>
 
+
+<script>
+(function () {
+  const thresholds = [120, 300, 450, 600];
+  const fired = {};
+
+  thresholds.forEach(seconds => {
+    fired[seconds] = false;
+    setTimeout(() => {
+      if (!fired[seconds] && typeof gtag === 'function') {
+        fired[seconds] = true;
+        gtag('event', `engaged_${seconds}s`, {
+          event_category: 'engagement',
+          value: seconds,
+          page_location: window.location.href
+        });
+      }
+    }, seconds * 1000);
+  });
+})();
+</script>
+
+
   
 </body>
 </html>
