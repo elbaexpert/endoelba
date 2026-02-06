@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Facciamo luce sull’endometriosi – EndoElba</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <meta name="description" content="Perché questo monumento è illuminato di giallo: pagina dedicata alla consapevolezza sull’endometriosi, promossa da EndoElba ODV." />
+  <style>
+    :root{
+      /* Palette coerente con targa */
+      --giallo:#F2C400;
+      --giallo-luce: rgba(242,196,0,.22);
+      --viola:#B77AC8;
+      --nero:#1f1f1f;
+      --grigio:#5f5f5f;
+      --bg:#ffffff;
+
+      --max: 980px;
+      --radius: 18px;
+      --shadow: 0 10px 28px rgba(0,0,0,.06);
+    }
+
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--nero);}
+    body{
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height:1.6;
+    }
+    a{color:inherit;}
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 16px 72px;
+    }
+
+    /* TOPBAR (coerente con logica landing “tovagliette”: semplice, sticky, leggibile) */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--giallo);
+      /* backdrop removed for solid topbar */
+      border-bottom: none;
+    }
+    .topbar .inner{
+      color: var(--nero);
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 10px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 0;
+    }
+    .brand .badge{
+      width:42px;height:42px;
+      border-radius: 999px;
+      border: 2px solid rgba(242,196,0,.6);
+      display:grid;place-items:center;
+      overflow:hidden;
+      background: #fff;
+    }
+    .brand .badge img{width:100%;height:100%;object-fit:cover;}
+    .brand .txt{
+      display:flex;
+      flex-direction:column;
+      line-height:1.15;
+      min-width: 0;
+    }
+    .brand .txt .kicker{
+      font-size: 12px;
+      color: var(--grigio);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .brand .txt .name{
+      font-weight: 900;
+      font-size: 13.5px;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+
+    .patro{
+      text-align:right;
+      min-width: 0;
+    }
+    .patro .kicker{
+      font-size: 12px;
+      color: var(--grigio);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .patro .comune{
+      font-weight: 900;
+      font-size: 13.5px;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .patro .stemma{
+      display:none; /* se vuoi, abilita e metti img */
+    }
+
+    /* Cornice “targa” */
+    .frame{
+      margin-top: 18px;
+      border: 8px solid var(--giallo);
+      border-radius: 26px;
+      padding: 26px 18px 22px;
+      position: relative;
+      overflow: hidden;
+      background:#fff;
+      box-shadow: var(--shadow);
+    }
+    .frame:before{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border: 2px solid rgba(242,196,0,.35);
+      border-radius: 18px;
+      pointer-events:none;
+    }
+
+    /* Hero */
+    .hero{
+      text-align:center;
+      padding: 6px 10px 10px;
+    }
+    .hero h1{
+      margin: 6px 0 10px;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-weight: 700;
+      font-size: clamp(28px, 4.2vw, 46px);
+      color: var(--viola);
+      letter-spacing: .2px;
+      line-height: 1.1;
+      display:inline-block;
+      position:relative;
+      padding: 6px 10px;
+    }
+    /* pennellata “luce” */
+    .hero h1:before{
+      content:"";
+      position:absolute;
+      left:-10px; right:-10px;
+      top: 56%;
+      height: 42%;
+      background: linear-gradient(90deg,
+        rgba(242,196,0,0) 0%,
+        rgba(242,196,0,.40) 16%,
+        rgba(242,196,0,.28) 84%,
+        rgba(242,196,0,0) 100%);
+      border-radius: 999px;
+      z-index:-1;
+    }
+    .sub{
+      margin: 0 auto;
+      max-width: 820px;
+      color: var(--grigio);
+      font-size: 16.5px;
+    }
+
+    /* Layout */
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+      padding: 18px 10px 6px;
+      align-items:start;
+    }
+    @media (max-width: 860px){
+      .grid{grid-template-columns: 1fr;}
+      .topbar .inner{
+      color: var(--nero);flex-direction:column; align-items:flex-start;}
+      .patro{text-align:left;}
+      .frame{padding: 22px 14px 18px;}
+    }
+
+    h2{
+      font-family: Georgia, "Times New Roman", Times, serif;
+      margin: 14px 0 10px;
+      font-size: 22px;
+    }
+
+    .card{
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: var(--radius);
+      padding: 16px 16px 14px;
+      background:#fff;
+    }
+    .highlight{
+      border-left: 5px solid var(--giallo);
+      padding-left: 12px;
+      margin: 10px 0 0;
+    }
+
+    /* Numeri */
+    .numbers{display:grid;gap:10px;margin-top:10px;}
+    .stat{
+      border-radius: 14px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      padding: 12px 12px 10px;
+    }
+    .stat .big{font-size:22px;font-weight:900;}
+    .stat .small{color:var(--grigio);font-size:13.5px;margin-top:2px;}
+
+    /* Claim */
+    .claim{
+      border-radius: var(--radius);
+      padding: 16px 16px 14px;
+      position: relative;
+      overflow:hidden;
+      background: rgba(242,196,0,.06);
+      border: 1px solid rgba(242,196,0,.35);
+    }
+    .claim:before{
+      content:"";
+      position:absolute;
+      inset:-18px -22px;
+      background: radial-gradient(circle at 40% 40%, rgba(183,122,200,.20), rgba(183,122,200,.00) 60%);
+      z-index:0;
+    }
+    .claim .inner{position:relative;z-index:1;}
+    .claim .line1{
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-weight:800;
+      font-size:24px;
+      margin:0 0 2px;
+    }
+    .claim .brush{
+      display:inline-block;
+      background: linear-gradient(transparent 60%, rgba(242,196,0,.65) 60%);
+      padding: 0 6px;
+      border-radius: 8px;
+    }
+    .claim .line2{
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-weight:700;
+      font-size:22px;
+      margin:0;
+    }
+
+    .cta-mini{
+      margin-top: 8px;
+      background:#111;
+      color:#fff;
+      font-weight: 900;
+      font-size: 12px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+    }
+    .cta-mini span{color:var(--giallo);}
+    .note{
+      text-align:center;
+      color: var(--grigio);
+      font-size: 12.5px;
+      margin-top: 10px;
+      max-width: 320px;
+    }
+
+    /* CTA buttons (mobile friendly) */
+    .cta{
+      display:grid;
+      gap: 10px;
+      padding: 10px 10px 6px;
+      margin-top: 12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      width:100%;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 2px solid var(--giallo);
+      background:#fff;
+      color:var(--nero);
+      text-decoration:none;
+      font-weight: 900;
+      font-size: 14.5px;
+    }
+    .btn.primary{background:var(--giallo);border-color:var(--giallo);}
+    .btn:hover{filter:brightness(.98); transform: translateY(-1px);}
+
+    /* Sostegno + contatti */
+    .support{
+      margin-top: 18px;
+      background: rgba(242,196,0,.08);
+      border: 1px solid rgba(242,196,0,.35);
+    }
+    .support p{margin: 0 0 10px;}
+    .support .mini{
+      font-size: 13px;
+      color: var(--grigio);
+    }
+
+    footer{
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(0,0,0,.18);
+      color: var(--grigio);
+      font-size: 12.5px;
+      text-align:center;
+    }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+  
+    /* --- TOPBAR come landing tovagliette --- */
+    :root{ --topbarH:84px; }
+    body{ padding-top: var(--topbarH); }
+    header.topbar{
+      position:fixed; top:0; left:0; right:0; z-index:60;
+      background: var(--giallo);
+      /* backdrop removed for solid topbar */
+      border-bottom: none;
+      padding: 10px 18px;
+      padding-top: calc(10px + env(safe-area-inset-top));
+    }
+    .topbar-inner{
+      width:100%;
+      max-width: var(--max);
+      margin:0 auto;
+      padding:10px 14px;
+      box-sizing:border-box;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:10px;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:10px; background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      object-fit:contain;
+    }
+    .brand{ display:flex; align-items:center; gap:10px; flex:0 1 auto; min-width:0; }
+    .brandTxt{ display:flex; flex-direction:column; line-height:1.05; min-width:0; }
+    .subname{ font-weight:700; font-size:1.12em; color:#3f3f3f; white-space:nowrap; }
+    .actions{ margin-left:auto; display:flex; align-items:center; gap:8px; flex-wrap:nowrap; }
+    .iconBtn{
+      width:48px; height:48px; border-radius:16px;
+      border:1px solid rgba(0,0,0,.10);
+      background:#fff;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+    }
+    .btn-wa-top{
+      width:48px; height:48px; border-radius:16px;
+      background:#22c55e; border:1px solid rgba(0,0,0,.08);
+      display:inline-flex; align-items:center; justify-content:center;
+      color:#0b1b0f; text-decoration:none;
+    }
+    .btn-wa-top i{ font-size:26px; }
+    .topFollow{
+      padding:9px 12px; border-radius:14px;
+      border:1px solid rgba(0,0,0,.10);
+      background:#fff;
+      text-decoration:none;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .topFollow .at{ color: var(--viola); font-weight:900; margin-right:3px; }
+
+    /* Mobile: riduci un filo */
+    @media (max-width: 520px){
+      :root{ --topbarH:74px; }
+      header.topbar{ padding:8px 12px; padding-top: calc(8px + env(safe-area-inset-top)); }
+      .topbar-inner{ padding:8px 10px; }
+      .subname{ font-size:1.02em; }
+      .iconBtn, .btn-wa-top{ width:38px; height:38px; border-radius:13px; }
+      .topFollow{ padding:8px 10px; font-size:14px; }
+    }
+
+    /* Patrocinio line */
+    .patroLine{
+      margin-top:10px;
+      font-weight:800;
+      font-size:14px;
+      color:#3f3f3f;
+      text-align:center;
+      padding:8px 10px;
+      border-radius: 14px;
+      border:1px solid rgba(242,196,0,.45);
+      background: rgba(242,196,0,.12);
+    }
+
+    
+    /* Share sheet */
+    #shareSheet{
+      position:fixed; inset:0;
+      display:none;
+      align-items:flex-end;
+      justify-content:center;
+      padding:18px;
+      background:rgba(0,0,0,.35);
+      z-index:9999;
+    }
+    #shareSheet.show{ display:flex; }
+    #shareSheet .sheet{
+      width:min(520px, 100%);
+      background:#fff;
+      border-radius:18px;
+      padding:16px;
+      box-shadow:0 20px 60px rgba(0,0,0,.25);
+    }
+    #shareSheet .shareIcon{ width:52px; height:52px; padding:0; border-radius:16px; }
+    #shareSheet .toast{
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(242,196,0,.18);
+      border:1px solid rgba(242,196,0,.45);
+      font-weight:800;
+      text-align:center;
+      display:none;
+    }
+    #shareSheet .toast.show{ display:block; }
+
+    /* Riutilizzo look “tovagliette” per righe pulsanti */
+    .btnRow{ display:flex; gap:10px; flex-wrap:wrap; }
+    .btnRow .btn{ flex:1 1 140px; justify-content:center; }
+
+
+  
+/* CTA enhancements */
+.btn.pulse{
+  animation: pulse 1.6s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(242,196,0,.6);}
+  70%{box-shadow:0 0 0 12px rgba(242,196,0,0);}
+  100%{box-shadow:0 0 0 0 rgba(242,196,0,0);}
+}
+.btn.bold{
+  font-size:16px;
+  font-weight:1000;
+  padding:14px 18px;
+}
+
+
+/* Topbar: pulsazione "seguici" */
+.topFollow{ animation: pulseTop 1.35s infinite; }
+@keyframes pulseTop{
+  0%{ box-shadow:0 0 0 0 rgba(255,255,255,.75); }
+  70%{ box-shadow:0 0 0 12px rgba(255,255,255,0); }
+  100%{ box-shadow:0 0 0 0 rgba(255,255,255,0); }
+}
+
+</style>
+</head>
+
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+<div class="topbar-inner">
+<div class="brand">
+<a href="https://endoelba.it" rel="noopener" target="_blank"><img alt="EndoElba" class="logo" src="https://endoelba.it/wp-content/uploads/2023/09/Endo-Elba-logo.png"/></a>
+<div class="brandTxt">
+<div class="subname">EndoElba</div>
+</div>
+</div>
+<div class="actions">
+<button aria-label="Condividi" class="iconBtn shareTop" id="shareBtnTop" type="button" data-track="share_open">
+<svg aria-hidden="true" height="22" viewbox="0 0 24 24" width="22"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7a3.27 3.27 0 0 0 0-1.39l7-4.11A2.99 2.99 0 0 0 18 7.91a3 3 0 1 0-3-3c0 .23.03.45.08.66l-7 4.11A3 3 0 1 0 6 15a2.99 2.99 0 0 0 2.05-.81l7.12 4.18c-.05.2-.07.41-.07.63a3 3 0 1 0 3-2.92z"></path></svg>
+</button>
+<a aria-label="WhatsApp EndoElba" class="btn-wa-top" href="https://wa.me/393534650921" rel="noopener" target="_blank" data-track="contatto_whatsapp">
+<i aria-hidden="true" class="fab fa-whatsapp"></i>
+</a>
+<a class="btn topFollow" href="https://www.instagram.com/endoelba/" rel="noopener" target="_blank">
+<span class="at">@</span> <span>seguici</span>
+</a>
+</div>
+</div>
+</header>
+
+  <div class="wrap">
+    <div class="frame" role="main" aria-label="Landing EndoElba - Monumenti illuminati di giallo">
+
+      <div class="hero">
+        <h1>Facciamo luce sull’endometriosi</h1>
+        <div class="sub">
+          Questo monumento è illuminato di giallo per rendere visibile una malattia che spesso non si vede.
+        </div>
+</div>
+
+      <div class="grid">
+        <!-- Colonna contenuti -->
+        <div class="card">
+          
+          <div class="highlight">
+            Questo monumento si illumina di giallo nel mese di marzo, mese della consapevolezza sull’endometriosi. In tutto il mondo monumenti e luoghi simbolici si illuminano di giallo
+            per accendere l’attenzione su una patologia cronica, ancora poco conosciuta.
+            <br><br>
+            <strong>Anche questo monumento fa parte di questa luce.</strong>
+          </div>
+
+          <h2 style="margin-top:18px;">Cos’è l’endometriosi</h2>
+          <p>
+            L’endometriosi è una patologia cronica che colpisce donne in età fertile. Può provocare dolore persistente e influire sulla vita quotidiana,
+            sul lavoro, sulle relazioni e sulla fertilità.
+          </p>
+          <p><strong>Il problema più grande? Spesso non si vede.</strong></p>
+
+          <h2 style="margin-top:18px;">Endometriosi in numeri</h2>
+          <div class="numbers" aria-label="Statistiche endometriosi">
+            <div class="stat">
+              <div class="big">1 su 10</div>
+              <div class="small">convive con l’endometriosi</div>
+            </div>
+            <div class="stat">
+              <div class="big">7–9 anni</div>
+              <div class="small">in media per arrivare a una diagnosi</div>
+            </div>
+            <div class="stat">
+              <div class="big">Dolori invisibili</div>
+              <div class="small">che impattano vita, lavoro e relazioni</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonna claim + QR + CTA -->
+        <div>
+          <div class="claim" aria-label="Claim della campagna">
+            <div class="inner">
+              <p class="line1"><span class="brush">Il giallo si vede.</span></p>
+              <p class="line2">Molti dolori no.</p>
+            </div>
+          </div>
+
+          
+
+          <div class="cta" aria-label="Call to action">
+            <a class="btn primary" href="https://endoelba.it" target="_blank" rel="noopener">Approfondisci sul sito EndoElba</a>
+            <a class="btn pulse" href="https://www.instagram.com/endoelba/" target="_blank" rel="noopener">Seguici</a>
+          </div>
+
+          
+          <div class="card" style="margin-top:18px;">
+            <h2>Chi è EndoElba</h2>
+            <p>
+              EndoElba è un’associazione di volontariato che opera sull’Isola d’Elba
+              per informare, sensibilizzare e sostenere chi convive con l’endometriosi.
+              Lavoriamo sul territorio con iniziative concrete, collaborazioni istituzionali
+              e progetti di consapevolezza come questo.
+            </p>
+          </div>
+
+          <p class="mini">
+              </p>
+          </div>
+
+          
+
+        
+<section class="card" id="chi">
+  <h2>Chi è EndoElba</h2>
+  <p class="muted">
+    EndoElba è un’associazione di volontariato che opera sull’Isola d’Elba per informare, sensibilizzare e sostenere le donne che convivono con l’endometriosi.
+    Lavoriamo sul territorio con iniziative concrete e collaborazioni istituzionali, perché <strong>mai più sola</strong> sia un messaggio reale, non solo una frase.
+  </p>
+</section>
+
+<section class="card" id="sostieni">
+<h2>Sostieni EndoElba</h2>
+<p class="muted">Puoi sostenerci con la tessera sostenitori o con una donazione: <strong>è una scelta consapevole e volontaria</strong>.</p>
+<div class="btnRow">
+<a class="btn greenSoft" href="https://endoelba.it/donazioni/" rel="noopener" target="_blank" data-track="tessera">Tessera Sostenitori</a>
+<a class="btn yellowDona" href="https://endoelba.it/donazioni/" rel="noopener" target="_blank" data-track="dona">Dona</a>
+</div>
+</section>
+        <section class="card" id="contatti"><h2>Contatti</h2><p class="muted">Il nostro gruppo è sempre a disposizione.<br/>Potete contattarci via whattsapp, dal nostro sito internet o parlando direttamente con noi <strong>... noi ci siamo, sempre!</strong></p><div class="btnRow"><a aria-label="WhatsApp EndoElba" class="btn btn-wa" href="https://wa.me/393534650921" rel="noopener" target="_blank" data-track="contatto_whatsapp"><i aria-hidden="true" class="fab fa-whatsapp"></i></a><a class="btn btn-site" href="https://endoelba.it/" rel="noopener" target="_blank" data-track="contatto_sito">EndoElba.it</a><a aria-label="Email EndoElba" class="btn btn-email" href="mailto:endoelba@gmail.com" data-track="contatto_email"><span class="gmailIcon"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span>Email</span></a></div></section>
+        <section class="card finaleThanks" style="margin-top:14px">
+<p class="muted" style="text-align:center; margin:0; font-size:16px">
+        Grazie per esserti fermato<br/>... per noi, anche questo è importante!
+      </p>
+<h2 class="heroTitle" style="text-align:center; margin:10px 0 0">Grazie <span aria-hidden="true" style="font-size:28px">💛</span></h2>
+</section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Personalizza il nome del Comune da querystring: ?comune=portoferraio
+  const params = new URLSearchParams(window.location.search);
+  const comune = params.get("comune");
+  if (comune) {
+    const pretty = comune
+      .split("-")
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ");
+    document.getElementById("comuneName").textContent = pretty;
+  }
+</script>
+
+
+<div aria-hidden="true" id="shareSheet">
+  <div aria-label="Condividi" class="sheet" role="dialog">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px">
+      <strong style="font-size:16px">Condividi</strong>
+      <button class="btn" id="shareClose" style="padding:8px 10px" type="button">Chiudi</button>
+    </div>
+    <p class="muted small" style="margin:10px 0 12px">Scegli dove vuoi condividere questa pagina.</p>
+    <div class="btnRow">
+      <a class="btn share shareIcon" href="#" id="shareWhatsApp" rel="noopener" target="_blank"><i aria-hidden="true" class="fab fa-whatsapp"></i></a>
+      <a class="btn share shareIcon" href="#" id="shareFacebook" rel="noopener" target="_blank"><i aria-hidden="true" class="fab fa-facebook-f"></i></a>
+      <a aria-label="Email" class="btn share shareIcon" href="#" id="shareEmail"><i aria-hidden="true" class="fa-solid fa-envelope"></i></a>
+      <button aria-label="Copia link" class="btn share shareIcon" id="shareCopy" type="button"><i aria-hidden="true" class="fa-solid fa-link"></i></button>
+    </div>
+    <div class="toast" id="shareToast" role="status" aria-live="polite">Link copiato ✅</div>
+  </div>
+</div>
+<script>
+(function(){
+  const shareBtn = document.getElementById('shareBtnTop');
+  const sheet = document.getElementById('shareSheet');
+  const closeBtn = document.getElementById('shareClose');
+  const toast = document.getElementById('shareToast');
+
+  function openSheet(){ sheet.classList.add('show'); sheet.setAttribute('aria-hidden','false'); }
+  function closeSheet(){ sheet.classList.remove('show'); sheet.setAttribute('aria-hidden','true'); }
+
+  if(shareBtn) shareBtn.addEventListener('click', openSheet);
+  if(closeBtn) closeBtn.addEventListener('click', closeSheet);
+  if(sheet) sheet.addEventListener('click', (e)=>{ if(e.target===sheet) closeSheet(); });
+
+  const url = location.href;
+  const encoded = encodeURIComponent(url);
+
+  const wa = document.getElementById('shareWhatsApp');
+  const fb = document.getElementById('shareFacebook');
+  const em = document.getElementById('shareEmail');
+
+  if(wa) wa.href = 'https://wa.me/?text=' + encodeURIComponent('Guarda questa pagina: ' + url);
+  if(fb) fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encoded;
+  if(em) em.href = 'mailto:?subject=' + encodeURIComponent('EndoElba – Monumenti illuminati di giallo') + '&body=' + encodeURIComponent(url);
+
+  const copyBtn = document.getElementById('shareCopy');
+  if(copyBtn) copyBtn.addEventListener('click', async ()=>{
+    try{
+      await navigator.clipboard.writeText(url);
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'), 1400);
+    }catch(e){}
+  });
+})();
+</script>
+
+</body>
+</html>
