@@ -23,7 +23,7 @@ function formatComune(slug){
     "marciana": "Marciana",
     "marcianamarina": "Marciana Marina",
     "camponellelba": "Campo nell’Elba",
-    "riomarina": "Rio" // fine comuni
+    "riomarina": "Rio Marina" // fine comuni
   };
 
   if(map[s]) return map[s];
