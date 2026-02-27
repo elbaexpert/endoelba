@@ -1,25 +1,76 @@
-// Funzione per leggere parametri URL
-function getParametro(nome) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(nome);
+function getParam(name){
+  return new URLSearchParams(window.location.search).get(name);
 }
 
-// Formattazione comune (portoferraio -> Portoferraio)
-function formatComune(slug) {
+function formatComune(slug){
   return slug
     .split("-")
-    .map(parola => parola.charAt(0).toUpperCase() + parola.slice(1))
+    .filter(Boolean)
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
 }
 
-// Gestione Comune
-document.addEventListener("DOMContentLoaded", function () {
-  const comuneSlug = getParametro("comune");
-  const comuneElement = document.getElementById("nomeComune");
+function initComune(){
+  const comuneSlug = getParam("comune");
+  const bar = document.getElementById("comuneBar");
+  const txt = document.getElementById("comuneText");
+  if(!bar || !txt) return;
 
-  if (comuneSlug && comuneElement) {
-    comuneElement.textContent = formatComune(comuneSlug);
-  } else if (comuneElement) {
-    comuneElement.textContent = "________";
+  if(comuneSlug){
+    txt.textContent = `Grazie al Comune di ${formatComune(comuneSlug)}`;
+    bar.hidden = false;
+  } else {
+    txt.textContent = "Grazie al Comune che ha aderito a questa iniziativa";
+    bar.hidden = false;
   }
+}
+
+function initShare(){
+  const sheet = document.getElementById('shareSheet');
+  const openers = [document.getElementById('shareBtnTop'), document.getElementById('shareBtnBottom')].filter(Boolean);
+  const closer = document.getElementById('shareClose');
+  const wa = document.getElementById('shareWhatsApp');
+  const fb = document.getElementById('shareFacebook');
+  const em = document.getElementById('shareEmail');
+  const copy = document.getElementById('shareCopy');
+  const toast = document.getElementById('shareToast');
+
+  if(!sheet) return;
+
+  const url = window.location.href;
+  const text = "Facciamo luce sull’endometriosi – EndoElba";
+
+  if(wa) wa.href = `https://wa.me/?text=${encodeURIComponent(text + "\n" + url)}`;
+  if(fb) fb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+  if(em) em.href = `mailto:?subject=${encodeURIComponent(text)}&body=${encodeURIComponent(url)}`;
+
+  function open(){ sheet.classList.add('open'); sheet.setAttribute('aria-hidden','false'); }
+  function close(){ sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true'); }
+
+  openers.forEach(btn => btn.addEventListener('click', open));
+  if(closer) closer.addEventListener('click', close);
+
+  sheet.addEventListener('click', (e) => { if(e.target === sheet) close(); });
+
+  if(copy){
+    copy.addEventListener('click', async () => {
+      try{
+        await navigator.clipboard.writeText(url);
+        if(toast){ toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1600); }
+      }catch{
+        const tmp = document.createElement('input');
+        tmp.value = url;
+        document.body.appendChild(tmp);
+        tmp.select();
+        document.execCommand('copy');
+        tmp.remove();
+        if(toast){ toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1600); }
+      }
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initComune();
+  initShare();
 });
