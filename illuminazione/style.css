@@ -285,3 +285,79 @@ a{color:inherit}
 @media (prefers-reduced-motion: reduce){
   *{scroll-behavior:auto}
 }
+
+
+
+/* Comune: a capo + più grande */
+.comuneBar{
+  align-items:flex-start;
+}
+.comuneTxt{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  line-height:1.1;
+}
+.comuneTitle{
+  font-weight:800;
+  font-size:13px;
+  opacity:.9;
+}
+.comuneName{
+  font-weight:1000;
+  font-size:18px;
+  color:#1f1f1f;
+}
+
+/* Claim: più grande + contorno viola */
+.claim{
+  border:2px solid rgba(106,27,154,.35);
+}
+.claim .line1{
+  font-size:20px;
+}
+.claim .line2{
+  font-size:18px;
+}
+
+/* Evidenza “Anche questo monumento...” centrata + gialla + testo bianco */
+.highlight-strong{
+  border-left:none;
+  text-align:center;
+  background: var(--endo-yellow);
+  color:#fff;
+}
+.highlight-strong strong{
+  color:#fff;
+}
+
+/* Titoli: Endometriosi con E maiuscola (già ok) e un pelo più “presente” */
+.card h2{
+  font-size:21px;
+}
+
+/* Numeri più grandi e testo descrittivo più grande */
+.big{
+  font-size:22px;
+}
+.small{
+  font-size:15px;
+}
+
+/* Sezione ringraziamento finale */
+.thanks{
+  border-top:1px solid var(--line);
+  padding:16px 14px 6px;
+  text-align:center;
+}
+.thanks h3{
+  margin:0 0 8px;
+  color:var(--endo-purple);
+  font-size:18px;
+}
+.thanks p{
+  margin:0;
+  color:var(--muted);
+  font-size:14.5px;
+}
+
