@@ -2,25 +2,62 @@ function getParam(name){
   return new URLSearchParams(window.location.search).get(name);
 }
 
-function formatComune(slug){
-  return slug
-    .split("-")
+function titleCaseWords(str){
+  return str
+    .split(" ")
     .filter(Boolean)
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
 }
 
+function formatComune(slug){
+  if(!slug) return "";
+
+  const s = slug.toLowerCase().trim();
+
+  // override “puliti” per evitare errori (portoazzurro -> Porto Azzurro, ecc.)
+  const map = {
+    "portoferraio": "Portoferraio",
+    "portoazzurro": "Porto Azzurro",
+    "capoliveri": "Capoliveri",
+    "marciana": "Marciana",
+    "marcianamarina": "Marciana Marina",
+    "camponellelba": "Campo nell’Elba",
+    "riomarina": "Rio" // fine comuni
+  };
+
+  if(map[s]) return map[s];
+
+  // fallback: da slug a testo (marciana-marina -> Marciana Marina)
+  const cleaned = s.replace(/[_]+/g, "-").replace(/-+/g, "-");
+  const words = cleaned.split("-").map(w => w.trim()).filter(Boolean);
+
+  // caso speciale: "nell" "del" "di" ecc (se mai usati)
+  const join = words.join(" ");
+  return titleCaseWords(join)
+    .replace(/\bNell\b/gi, "nell’")
+    .replace(/\bDel\b/gi, "del")
+    .replace(/\bDella\b/gi, "della")
+    .replace(/\bDi\b/gi, "di");
+}
+
 function initComune(){
   const comuneSlug = getParam("comune");
   const bar = document.getElementById("comuneBar");
-  const txt = document.getElementById("comuneText");
-  if(!bar || !txt) return;
+  const title = document.getElementById("comuneTitle");
+  const name = document.getElementById("comuneName");
+
+  if(!bar || !title || !name) return;
 
   if(comuneSlug){
-    txt.textContent = `Grazie al Comune di ${formatComune(comuneSlug)}`;
+    const comune = formatComune(comuneSlug);
+    title.textContent = "Grazie al Comune di";
+    name.textContent = comune;
     bar.hidden = false;
   } else {
-    txt.textContent = "Grazie al Comune che ha aderito a questa iniziativa";
+    // se NON c'è variabile: messaggio neutro (senza buchi)
+    title.textContent = "Grazie al Comune che ha aderito a questa iniziativa";
+    name.textContent = "";
     bar.hidden = false;
   }
 }
@@ -38,7 +75,7 @@ function initShare(){
   if(!sheet) return;
 
   const url = window.location.href;
-  const text = "Facciamo luce sull’endometriosi – EndoElba";
+  const text = "Facciamo luce sull’Endometriosi – EndoElba";
 
   if(wa) wa.href = `https://wa.me/?text=${encodeURIComponent(text + "\n" + url)}`;
   if(fb) fb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
@@ -49,14 +86,12 @@ function initShare(){
 
   openers.forEach(btn => btn.addEventListener('click', open));
   if(closer) closer.addEventListener('click', close);
-
   sheet.addEventListener('click', (e) => { if(e.target === sheet) close(); });
 
   if(copy){
     copy.addEventListener('click', async () => {
       try{
         await navigator.clipboard.writeText(url);
-        if(toast){ toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1600); }
       }catch{
         const tmp = document.createElement('input');
         tmp.value = url;
@@ -64,8 +99,8 @@ function initShare(){
         tmp.select();
         document.execCommand('copy');
         tmp.remove();
-        if(toast){ toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1600); }
       }
+      if(toast){ toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1600); }
     });
   }
 }
