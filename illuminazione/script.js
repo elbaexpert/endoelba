@@ -1,3 +1,16 @@
+
+function track(eventName, params = {}){
+  // GA4 via gtag
+  if (typeof window.gtag === "function"){
+    window.gtag("event", eventName, params);
+    return;
+  }
+  // GA4 via dataLayer
+  if (Array.isArray(window.dataLayer)){
+    window.dataLayer.push({ event: eventName, ...params });
+  }
+}
+
 function getParam(name){
   return new URLSearchParams(window.location.search).get(name);
 }
@@ -105,7 +118,56 @@ function initShare(){
   }
 }
 
+
+function initAnalytics(){
+  const qs = (sel) => document.querySelector(sel);
+
+  const clickMap = [
+    ["#shareBtnTop", "share_open", {position:"top"}],
+    ["#shareBtnBottom", "share_open", {position:"bottom"}],
+    [".btn-wa-top", "click_whatsapp", {position:"topbar"}],
+    [".topFollow", "click_instagram", {position:"topbar"}],
+    [".ctaRow .btn.primary", "click_approfondisci", {position:"content"}],
+    ["#sostieni .btn.glowPulse", "click_tessera", {position:"sostieni"}],
+    ["#sostieni .btn.primary", "click_dona", {position:"sostieni"}],
+    ["#contatti .btn-wa", "click_whatsapp", {position:"contatti"}],
+    ["#contatti .btn-site", "click_sito", {position:"contatti"}],
+    ["#contatti .btn-email", "click_email", {position:"contatti"}],
+    ["#shareWhatsApp", "share_channel", {channel:"whatsapp"}],
+    ["#shareFacebook", "share_channel", {channel:"facebook"}],
+    ["#shareEmail", "share_channel", {channel:"email"}],
+    ["#shareCopy", "share_channel", {channel:"copy_link"}],
+  ];
+
+  clickMap.forEach(([sel, ev, params]) => {
+    const el = qs(sel);
+    if(!el) return;
+    el.addEventListener("click", () => track(ev, params));
+  });
+
+  // Scroll depth
+  const fired = {};
+  const thresholds = [25, 50, 75, 90, 100];
+  function onScroll(){
+    const doc = document.documentElement;
+    const scroll = (window.scrollY || doc.scrollTop) + window.innerHeight;
+    const height = Math.max(doc.scrollHeight, document.body.scrollHeight);
+    const percent = Math.round((scroll / height) * 100);
+
+    thresholds.forEach(t => {
+      if(percent >= t && !fired[t]){
+        fired[t] = true;
+        track("scroll_reach", {percent: t});
+      }
+    });
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
   initComune();
   initShare();
+  initAnalytics();
 });
