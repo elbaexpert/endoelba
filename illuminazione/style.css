@@ -22,9 +22,11 @@ a{color:inherit}
 
 /* TOPBAR */
 .topbar{
-  position:sticky;
+  position:fixed;
   top:0;
-  z-index:20;
+  left:0;
+  right:0;
+  z-index:999;
   background:#fff;
   border-bottom:1px solid var(--line);
 }
@@ -40,7 +42,7 @@ a{color:inherit}
 .brand{display:flex; align-items:center; gap:10px; min-width:0;}
 .logo{width:42px; height:42px; object-fit:contain; border-radius:10px;}
 .brandTxt{display:flex; flex-direction:column; min-width:0;}
-.subname{font-weight:800; color:var(--endo-purple); line-height:1.1 font-size:19px;}
+.subname{font-weight:800; color:var(--endo-purple); line-height:1.1; font-size:19.5px;}
 .kicker{font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .actions{display:flex; align-items:center; gap:10px;}
 .iconBtn{
@@ -73,7 +75,7 @@ a{color:inherit}
 .topFollow .at{color:var(--endo-purple)}
 
 /* PAGE WRAP */
-.wrap{padding:14px 10px 18px;}
+.wrap{padding:78px 10px 18px;}
 .frame{
   max-width:980px;
   margin:0 auto;
@@ -383,3 +385,82 @@ a{color:inherit}
 }
 .glowPulse{animation: glowPulse 1.55s ease-in-out infinite;}
 .heartPulse{color: var(--endo-yellow); animation: glowPulse 1.55s ease-in-out infinite; display:inline-block;}
+
+
+/* === FIX 2026-02-28: richieste Marco === */
+
+/* Comune bar: centrata e più grande */
+.comuneBar{
+  justify-content:center;
+  text-align:center;
+  align-items:center;
+}
+.comuneTxt{
+  align-items:center;
+}
+.comuneTitle{
+  font-size:16px;
+}
+.comuneName{
+  font-size:24px;
+}
+
+/* "Sai perché m'illumino?" come H2 */
+.question{
+  margin:0 0 10px;
+  color:var(--endo-purple);
+  font-size:21px;
+  font-weight:800;
+  line-height:1.2;
+}
+
+/* Evidenza "Anche questo monumento..." arancione scuro su giallo */
+.highlight-strong{
+  background: var(--endo-yellow);
+  color:#a35a00;
+}
+.highlight-strong strong{
+  color:#a35a00;
+}
+
+/* Spazio prima di "Endometriosi in numeri" */
+.spacer{height:26px;}
+
+/* Box numeri centrati */
+.stat{ text-align:center; }
+
+/* "Mai più sola" centrato e bold */
+.pillBtn{
+  display:block;
+  text-align:center;
+  font-weight:900;
+}
+.boldCenter{ text-align:center; font-weight:900; }
+
+/* Chiusura: stesso corpo di testo dei paragrafi */
+.thanksText{
+  font-size:16px;
+  color:var(--muted);
+}
+
+/* "Grazie per il supporto" stile coerente con pulsanti, cuori gialli */
+.thanksBig{
+  margin:12px 0 0;
+  font-size:16px;
+  font-weight:800;
+  color:var(--endo-purple);
+}
+.heartPulse{
+  color: var(--endo-yellow);
+}
+
+/* Pulsazioni più evidenti: bordo giallo + glow viola */
+@keyframes violetGlow{
+  0%{transform: translateY(0) scale(1); box-shadow: 0 0 0 rgba(106,27,154,0);}
+  50%{transform: translateY(-1px) scale(1.03); box-shadow: 0 0 22px rgba(106,27,154,.75);}
+  100%{transform: translateY(0) scale(1); box-shadow: 0 0 0 rgba(106,27,154,0);}
+}
+.glowPulse{
+  animation: violetGlow 1.35s ease-in-out infinite !important;
+  border:2px solid var(--endo-yellow) !important;
+}
