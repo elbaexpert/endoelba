@@ -75,7 +75,7 @@ function initShare(){
   if(!sheet) return;
 
   const url = window.location.href;
-  const text = "Facciamo luce sull’endometriosi – EndoElba";
+  const text = "Facciamo luce sull’Endometriosi – EndoElba";
 
   if(wa) wa.href = `https://wa.me/?text=${encodeURIComponent(text + "\n" + url)}`;
   if(fb) fb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
