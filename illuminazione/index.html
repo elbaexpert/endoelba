@@ -26,7 +26,7 @@
         </a>
         <div class="brandTxt">
           <div class="subname">EndoElba</div>
-          <div class="kicker">Illuminazione monumenti • Marzo</div>
+          <!-- (kicker rimosso) -->
         </div>
       </div>
 
@@ -41,7 +41,7 @@
           <i class="fab fa-whatsapp" aria-hidden="true"></i>
         </a>
 
-        <a class="topFollow" href="https://www.instagram.com/endoelba/" rel="noopener" target="_blank">
+        <a class="topFollow pulse" href="https://www.instagram.com/endoelba/" rel="noopener" target="_blank" aria-label="Segui EndoElba su Instagram">
           <span class="at">@</span><span>seguici</span>
         </a>
       </div>
@@ -53,17 +53,17 @@
     <main class="frame" aria-label="Landing EndoElba - Monumenti illuminati di giallo">
 
       <!-- BANNER COMUNE -->
-<div class="comuneBar" id="comuneBar" aria-label="Ringraziamento Comune" hidden>
-  <i class="fa-solid fa-award" aria-hidden="true"></i>
-  <div class="comuneTxt">
-    <div class="comuneTitle" id="comuneTitle">Grazie al Comune di</div>
-    <div class="comuneName" id="comuneName"></div>
-  </div>
-</div>
+      <div class="comuneBar" id="comuneBar" aria-label="Ringraziamento Comune" hidden>
+        <i class="fa-solid fa-award" aria-hidden="true"></i>
+        <div class="comuneTxt">
+          <div class="comuneTitle" id="comuneTitle">Grazie al Comune di</div>
+          <div class="comuneName" id="comuneName"></div>
+        </div>
+      </div>
 
       <section class="hero">
         <h1>Facciamo luce sull’endometriosi</h1>
-        <p class="sub">Una malattia <strong>spesso invisibile</strong>.</p>
+        <p class="sub">Una malattia<br><strong>spesso invisibile</strong>.</p>
 
         <!-- CLAIM SUBITO SOTTO -->
         <div class="claim" aria-label="Claim della campagna">
@@ -80,6 +80,7 @@
         <section class="card" aria-label="Contenuti informativi">
 
           <div class="highlight">
+            <p class="question">Lo sai perché m’illumino?</p>
             <p>
               Nel mese di <strong>marzo</strong>, mese della consapevolezza sull’endometriosi, monumenti e luoghi simbolici in tutto il mondo
               si illuminano di <strong>giallo</strong> per accendere l’attenzione su una patologia cronica ancora troppo poco conosciuta.
@@ -93,21 +94,20 @@
             Può causare dolore persistente e influire sulla qualità della vita quotidiana, sul lavoro, sulle relazioni e sulla fertilità.
           </p>
           <p class="key">
-            Il problema più grande? <strong>Spesso è invisibile.</strong>
+            Il problema più grande?<br><strong>Spesso è invisibile, ma c’è.</strong>
           </p>
 
-          <div class="ctaRow">
+          <div class="ctaRow single">
             <a class="btn primary" href="https://endoelba.it" rel="noopener" target="_blank">Approfondisci sul sito</a>
-            <a class="btn" href="https://www.instagram.com/endoelba/" rel="noopener" target="_blank">Seguici</a>
           </div>
 
-
+          <div class="spacer" aria-hidden="true"></div>
 
           <h2>Endometriosi in numeri</h2>
           <div class="numbers" aria-label="Statistiche endometriosi">
             <div class="stat">
               <div class="big">1 su 10</div>
-              <div class="small">donne in età fertile convive con l’endometriosi</div>
+              <div class="small">donne in età fertile convive con l’Endometriosi</div>
             </div>
             <div class="stat">
               <div class="big">7–9 anni</div>
@@ -115,13 +115,10 @@
             </div>
             <div class="stat">
               <div class="big">Dolore</div>
-              <div class="small">spesso invisibile, ma reale (vita, lavoro, relazioni)</div>
+              <div class="small">Spesso invisibile,<br>ma reale (vita, lavoro, relazioni)</div>
             </div>
           </div>
 
-
-
-          
         </section>
 
         <!-- COLONNA INFO -->
@@ -138,17 +135,20 @@
 
             <p class="muted" style="margin-top:12px">
               EndoElba è un’associazione fatta <b>da donne elbane, per donne elbane</b>.
-Informiamo, sensibilizziamo e creiamo iniziative concrete sul territorio: incontri, eventi e soprattutto <b>visite e percorsi di supporto</b> per chi convive con l’Endometriosi.
+              Informiamo, sensibilizziamo e creiamo iniziative concrete sul territorio: incontri, eventi e soprattutto <b>visite e percorsi di supporto</b>
+              per chi convive con l’Endometriosi.
             </p>
 
-            <div class="pill">❤️ <strong>Mai più sola.</strong></div>
+            <a class="pillBtn pulse" href="https://wa.me/393534650921" rel="noopener" target="_blank" aria-label="Scrivi a EndoElba su WhatsApp">
+              Mai più sola ❤️!
+            </a>
           </section>
 
           <section class="card" id="sostieni" style="margin-top:14px;">
             <h2>Sostieni EndoElba</h2>
             <p class="muted">Puoi aiutarci con una donazione o con la tessera sostenitori.</p>
             <div class="btnRow">
-              <a class="btn" href="https://endoelba.it/donazioni/" rel="noopener" target="_blank">Tessera</a>
+              <a class="btn pulseSoft" href="https://endoelba.it/donazioni/" rel="noopener" target="_blank">Tessera</a>
               <a class="btn primary" href="https://endoelba.it/donazioni/" rel="noopener" target="_blank">Dona</a>
             </div>
           </section>
@@ -159,7 +159,7 @@ Informiamo, sensibilizziamo e creiamo iniziative concrete sul territorio: incont
               Se hai bisogno di informazioni o supporto, scrivici.
               <br><strong>Noi ci siamo.</strong>
             </p>
-            <div class="btnRow">
+            <div class="btnRow btnRow4">
               <a class="btn btn-wa" href="https://wa.me/393534650921" rel="noopener" target="_blank" aria-label="WhatsApp EndoElba">
                 <i class="fab fa-whatsapp" aria-hidden="true"></i>
                 <span>WhatsApp</span>
@@ -169,6 +169,9 @@ Informiamo, sensibilizziamo e creiamo iniziative concrete sul territorio: incont
                 <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                 <span>Email</span>
               </a>
+              <a class="btn primary pulseSoft" href="https://wa.me/393534650921?text=Ciao%20EndoElba%2C%20ho%20bisogno%20di%20informazioni%20o%20supporto." rel="noopener" target="_blank" aria-label="Noi ci siamo - contatto rapido WhatsApp">
+                Noi ci siamo
+              </a>
             </div>
           </section>
 
@@ -176,16 +179,13 @@ Informiamo, sensibilizziamo e creiamo iniziative concrete sul territorio: incont
 
       </div>
 
-
       <section class="thanks">
-  <h3>Grazie</h3>
-  <p>
-    Grazie a chi rende possibile questa iniziativa: Comuni, associazioni, attività e cittadini che scelgono di
-    <strong>accendere una luce</strong> su un dolore spesso invisibile.
-  </p>
-</section>
+        <p class="thanksBig">💛 Grazie a chi rende possibile questa iniziativa 💛</p>
+        <p>
+          Comuni, associazioni, attività e cittadini che scelgono di <strong>accendere una luce</strong> su un dolore spesso invisibile.
+        </p>
+      </section>
 
-      
       <footer class="pageFooter">
         <button class="linkBtn" id="shareBtnBottom" type="button">Condividi questa pagina</button>
         <div class="tiny">EndoElba ODV • Campagna Illuminazione Monumenti</div>
