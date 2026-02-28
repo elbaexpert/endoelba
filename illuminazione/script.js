@@ -81,8 +81,8 @@ function initShare(){
   if(fb) fb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
   if(em) em.href = `mailto:?subject=${encodeURIComponent(text)}&body=${encodeURIComponent(url)}`;
 
-  function open(){ sheet.classList.add('open'); sheet.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-  function close(){ sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  function open(){ sheet.classList.add('open'); sheet.setAttribute('aria-hidden','false'); }
+  function close(){ sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true'); }
 
   openers.forEach(btn => btn.addEventListener('click', open));
   if(closer) closer.addEventListener('click', close);
