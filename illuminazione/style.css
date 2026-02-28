@@ -361,21 +361,11 @@ a{color:inherit}
   font-size:14.5px;
 }
 
+.thanksText{margin:0; color:var(--muted); font-size:14.5px; line-height:1.35;}
+.thanksBig{margin:12px 0 0; font-size:20px; font-weight:900;}
 
 
 
-.thanksLines{
-  margin:0;
-  color:var(--muted);
-  font-size:14.5px;
-  line-height:1.45;
-}
-.thanksBig{
-  margin:10px 0 6px;
-  font-size:20px; /* ~+35% rispetto a 14.5px */
-  line-height:1.2;
-}
-.thanksBig .heartPulse{font-size:1.05em;}
 /* TESTI GIUSTIFICATI */
 .justify{ text-align: justify; text-justify: inter-word; hyphens: auto; }
 
